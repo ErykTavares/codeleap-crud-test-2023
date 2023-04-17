@@ -1,4 +1,12 @@
-import React from 'react';
+import DefaultLayout from '@/layout/defaultLayout';
+import * as S from './style';
 
-const Main = (): JSX.Element => <div>main page</div>;
-export default Main;
+const Home = () => (
+	<DefaultLayout>
+		<S.ContainerStyle>
+			<h2>esta e a home</h2>
+		</S.ContainerStyle>
+	</DefaultLayout>
+);
+
+export default Home;
