@@ -6,3 +6,23 @@ export const ContainerStyle = styled.section`
 	align-items: center;
 	justify-content: center;
 `;
+
+export const LoginWrapperStyle = styled.div`
+	width: 100%;
+	max-width: 500px;
+	height: 270px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	background-color: white;
+	padding: 2rem 1.5rem;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+	.title-container {
+		h2 {
+			font-size: 1.5rem;
+			font-weight: bold;
+		}
+	}
+`;

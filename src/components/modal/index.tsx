@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from './style';
+import { ModalStyle } from './style';
 
 interface IModalProps {
 	children: JSX.Element;
@@ -8,8 +8,8 @@ interface IModalProps {
 }
 
 const Modal = ({ children, show, setShow }: IModalProps): JSX.Element => (
-	<S.ModalStyle onKeyDown={(event) => (event.key === 'Escape' ? setShow(!show) : null)}>
+	<ModalStyle onKeyDown={(event) => (event.key === 'Escape' ? setShow(!show) : null)}>
 		{children}
-	</S.ModalStyle>
+	</ModalStyle>
 );
 export default Modal;

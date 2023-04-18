@@ -1,11 +1,11 @@
 import React from 'react';
-import * as S from './style';
+import { HeaderStyle } from './style';
 
 const Header = (): JSX.Element => (
-	<S.HeaderStyle>
+	<HeaderStyle>
 		<h1>CodeLeap Network</h1>
 
 		<h2>user</h2>
-	</S.HeaderStyle>
+	</HeaderStyle>
 );
 export default Header;

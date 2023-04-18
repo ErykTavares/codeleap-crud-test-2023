@@ -1,11 +1,11 @@
 import DefaultLayout from '@/layout/defaultLayout';
-import * as S from './style';
+import { ContainerStyle } from './style';
 
 const Home = () => (
 	<DefaultLayout>
-		<S.ContainerStyle>
+		<ContainerStyle>
 			<h2>esta e a home</h2>
-		</S.ContainerStyle>
+		</ContainerStyle>
 	</DefaultLayout>
 );
 

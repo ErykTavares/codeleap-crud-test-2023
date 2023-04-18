@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const FormStyle = styled.form`
 	width: 100%;
@@ -11,17 +11,14 @@ export const FormStyle = styled.form`
 `;
 
 export const LabelStyle = styled.label`
-	${({ theme }) => css`
-		width: max-content;
-		height: 28.65px;
-		display: flex;
-		align-items: center;
-		justify: start;
-		font-style: normal;
-		font-weight: 700;
-		font-size: 1.1rem;
-		line-height: 1.375px;
-		margin-bottom: 0.5rem;
-		color: ${theme.colors.blue.normal};
-	`}
+	width: max-content;
+	height: 28.65px;
+	display: flex;
+	align-items: center;
+	justify: start;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 1.1rem;
+	line-height: 1.375px;
+	margin-bottom: 0.5rem;
 `;
