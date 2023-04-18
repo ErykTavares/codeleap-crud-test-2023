@@ -8,4 +8,7 @@ export const HeaderStyle = styled.header`
 	justify-content: space-between;
 	align-self: start;
 	justify-self: start;
+	background-color: black;
+	color: white;
+	padding: 0 3rem;
 `;
