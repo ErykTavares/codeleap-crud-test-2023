@@ -8,4 +8,9 @@ export const FooterStyle = styled.footer`
 	justify-content: center;
 	align-self: end;
 	justify-self: end;
+	background-color: #e5e5e5;
+
+	h6 {
+		cursor: pointer;
+	}
 `;
