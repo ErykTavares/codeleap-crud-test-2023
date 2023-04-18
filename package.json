@@ -13,6 +13,7 @@
 		"format": "npm run prettier:fix"
 	},
 	"dependencies": {
+		"@hookform/resolvers": "^3.1.0",
 		"@reduxjs/toolkit": "^1.9.4",
 		"@types/node": "18.15.11",
 		"@types/react": "18.0.35",
@@ -28,7 +29,8 @@
 		"react-hook-form": "^7.43.9",
 		"react-redux": "^8.0.5",
 		"redux-persist": "^6.0.0",
-		"styled-components": "^5.3.9"
+		"styled-components": "^5.3.9",
+		"yup": "^1.1.1"
 	},
 	"devDependencies": {
 		"@types/react-redux": "^7.1.25",

@@ -18,7 +18,12 @@ export const ButtonStyle = styled.button<IButtonStyledProps>`
 		font-size: 1.1rem;
 		font-weight: 500;
 		cursor: pointer;
-		border: 1px solid #999999;
+		border: 1px solid ${theme?.colors?.[backgroundColor as never] || '#999999'};
 		border-radius: 0.5rem;
+
+		&:disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
+		}
 	`}
 `;

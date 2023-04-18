@@ -87,6 +87,9 @@ const Input = React.forwardRef(
 					value={value}
 					ref={ref}
 				/>
+				{errors?.[name] || errors ? (
+					<span className='badge bg-danger px-2  my-2'>{(errors[name] || errors).message}</span>
+				) : null}
 			</div>
 		</InputWrapperStyle>
 	)
