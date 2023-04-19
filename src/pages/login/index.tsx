@@ -8,7 +8,8 @@ import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-
+import { useRouter } from 'next/navigation';
+import nookies from 'nookies';
 import { ContainerStyle, LoginWrapperStyle } from './style';
 
 export const loginSchema = yup.object().shape({
@@ -27,13 +28,18 @@ const Login = (): JSX.Element => {
 		resolver: yupResolver(loginSchema)
 	});
 
+	const router = useRouter();
+
 	const handleSetUserName = (data: { userName: string }): void => {
+		const profile = { userName: data.userName };
 		store.dispatch(
 			userActions.setUserName({
-				profile: { userName: data.userName },
+				profile,
 				auth: {}
 			})
 		);
+		nookies.set(null, 'profile', JSON.stringify(profile));
+		router.push('/');
 	};
 
 	return (

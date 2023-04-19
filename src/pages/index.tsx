@@ -1,11 +1,35 @@
 import DefaultLayout from '@/layout/defaultLayout';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import nookies from 'nookies';
+import { GetServerSidePropsContext } from 'next/types';
 import { ContainerStyle } from './style';
 
-const Home = () => {
-	const test = useSelector((state: any) => state);
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+	const cookies = nookies.get(ctx);
 
-	console.log(test);
+	if (cookies.profile) {
+		const profile = JSON.parse(cookies?.profile || '');
+		console.log('test', profile);
+		return { props: { profile } };
+	}
+
+	return {
+		redirect: {
+			destination: '/login',
+			permanence: true
+		}
+	};
+}
+
+const Home = () => {
+	const userName = useSelector((state: any) => state.userReducer.profile.userName);
+	const route = useRouter();
+
+	useEffect(() => {
+		// !userName && route.push('/login');
+	}, [userName, route]);
 
 	return (
 		<DefaultLayout>
