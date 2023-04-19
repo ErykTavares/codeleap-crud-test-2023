@@ -9,7 +9,6 @@ import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
-import nookies from 'nookies';
 import { ContainerStyle, LoginWrapperStyle } from './style';
 
 export const loginSchema = yup.object().shape({
@@ -38,7 +37,6 @@ const Login = (): JSX.Element => {
 				auth: {}
 			})
 		);
-		nookies.set(null, 'profile', JSON.stringify(profile));
 		router.push('/');
 	};
 

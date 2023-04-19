@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import nookies from 'nookies';
 
 interface IUser {
 	profile: { userName: string };
@@ -15,8 +16,12 @@ export const userSlice = createSlice({
 	initialState,
 	reducers: {
 		setUserName(state, action: PayloadAction<IUser>) {
-			console.log(action.payload.profile.userName);
 			state.profile = action.payload.profile;
+			nookies.set(null, 'profile', JSON.stringify(action.payload.profile));
+		},
+		removeUserName(state) {
+			state.profile = initialState.profile;
+			nookies.destroy(null, 'profile');
 		}
 	}
 });
