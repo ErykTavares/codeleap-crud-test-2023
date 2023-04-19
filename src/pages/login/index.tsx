@@ -27,7 +27,7 @@ const Login = (): JSX.Element => {
 		resolver: yupResolver(loginSchema)
 	});
 
-	const router = useRouter();
+	const { push } = useRouter();
 
 	const handleSetUserName = (data: { userName: string }): void => {
 		const profile = { userName: data.userName };
@@ -37,7 +37,7 @@ const Login = (): JSX.Element => {
 				auth: {}
 			})
 		);
-		router.push('/');
+		push('/');
 	};
 
 	return (
