@@ -3,6 +3,7 @@ import PostCard from '@/components/cards/postCard';
 import DefaultLayout from '@/layout/defaultLayout';
 import api from '@/services/api';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import Swal from 'sweetalert2';
 import { ContainerStyle, PostsWrapperStyle } from './style';
 
 const Home = () => {
@@ -20,7 +21,10 @@ const Home = () => {
 		})
 			.then((res) => {
 				const { results, count }: { results: DPost.IPost[]; count: number } = res.data;
-				const prevFilters = [...posts.filter((fil) => !results.includes(fil)), ...results];
+				const prevFilters = [
+					...posts.filter((fil) => !results.includes(fil) && !!offset),
+					...results
+				];
 
 				setPosts(prevFilters);
 				if (count === posts.length) {
@@ -28,7 +32,7 @@ const Home = () => {
 				}
 			})
 			.catch((err) => {
-				console.log(err);
+				Swal.fire(err?.response?.data?.message || 'Something went wrong', '', 'error');
 			});
 	}, [offset]);
 
@@ -48,10 +52,10 @@ const Home = () => {
 	return (
 		<DefaultLayout>
 			<ContainerStyle onScroll={handleScroll} ref={containerRef}>
-				<CreatePostCard postsGet={postsGet} />
+				<CreatePostCard postsGet={postsGet} setOffset={setOffset} />
 				<PostsWrapperStyle>
 					{posts?.map((item) => (
-						<PostCard key={item.id} post={item} />
+						<PostCard key={crypto.randomUUID()} post={item} />
 					))}
 				</PostsWrapperStyle>
 			</ContainerStyle>

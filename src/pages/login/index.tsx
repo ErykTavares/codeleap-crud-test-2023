@@ -19,7 +19,11 @@ export const loginSchema = yup.object().shape({
 });
 
 const Login = (): JSX.Element => {
-	const { control, handleSubmit, formState } = useForm({
+	const {
+		control,
+		handleSubmit,
+		formState: { isDirty, isValid }
+	} = useForm({
 		mode: 'onSubmit',
 		defaultValues: {
 			userName: ''
@@ -74,7 +78,7 @@ const Login = (): JSX.Element => {
 								type='submit'
 								backgroundColor='blue'
 								color='white'
-								disabled={!formState.isValid}
+								disabled={!isDirty || !isValid}
 							>
 								Enter
 							</Button>
