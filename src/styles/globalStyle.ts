@@ -28,7 +28,6 @@ export const GlobalStyle = createGlobalStyle`
             width: 100%;
 	        height: calc(100vh - 100px - 60px);
             overflow:auto;
-            background-color:#dddddd;
         }
 
         img{

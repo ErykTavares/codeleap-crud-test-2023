@@ -2,7 +2,7 @@ import React, { ChangeEventHandler, FocusEventHandler } from 'react';
 import { LabelStyle } from '../style';
 import { InputWrapperStyle } from './styled';
 
-interface IProps {
+interface IInputProps {
 	type:
 		| 'button'
 		| 'checkbox'
@@ -50,7 +50,6 @@ const Input = React.forwardRef(
 			placeholder,
 			autoComplete,
 			onChange,
-			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			errors,
 			onBlur,
 			name,
@@ -61,7 +60,7 @@ const Input = React.forwardRef(
 			value,
 			min,
 			max
-		}: IProps,
+		}: IInputProps,
 		ref: React.LegacyRef<HTMLInputElement>
 	) => (
 		<InputWrapperStyle>
