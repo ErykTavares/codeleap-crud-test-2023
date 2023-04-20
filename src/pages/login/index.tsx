@@ -14,15 +14,15 @@ import { ContainerStyle, LoginWrapperStyle } from './style';
 export const loginSchema = yup.object().shape({
 	userName: yup
 		.string()
-		.min(5, 'String must be at least 5 characters long')
-		.required('String is required')
+		.min(5, 'User Name must be at least 5 characters long')
+		.required('User Name is required')
 });
 
 const Login = (): JSX.Element => {
 	const {
 		control,
 		handleSubmit,
-		formState: { isDirty, isValid }
+		formState: { isDirty }
 	} = useForm({
 		mode: 'onSubmit',
 		defaultValues: {
@@ -74,12 +74,7 @@ const Login = (): JSX.Element => {
 							/>
 						</div>
 						<div className='col-12 d-flex justify-content-end pe-2 mt-2'>
-							<Button
-								type='submit'
-								backgroundColor='blue'
-								color='white'
-								disabled={!isDirty || !isValid}
-							>
+							<Button type='submit' backgroundColor='blue' color='white' disabled={!isDirty}>
 								Enter
 							</Button>
 						</div>

@@ -61,7 +61,12 @@ const Home = () => {
 				<CreatePostCard postsGet={postsGet} setOffset={setOffset} />
 				<PostsWrapperStyle>
 					{posts?.map((item) => (
-						<PostCard key={crypto.randomUUID()} post={item} />
+						<PostCard
+							key={crypto.randomUUID()}
+							post={item}
+							postsGet={postsGet}
+							setOffset={setOffset}
+						/>
 					))}
 				</PostsWrapperStyle>
 			</ContainerStyle>

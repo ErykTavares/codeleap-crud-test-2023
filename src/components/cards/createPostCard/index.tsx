@@ -18,7 +18,7 @@ interface IPostsModalProps {
 }
 
 export const postSchema = yup.object().shape({
-	title: yup.string(),
+	title: yup.string().max(27, 'title must be at most 27 characters'),
 	content: yup.string()
 });
 
@@ -27,7 +27,8 @@ const CreatePostCard = ({ postsGet, setOffset }: IPostsModalProps): JSX.Element 
 	const {
 		control,
 		handleSubmit,
-		formState: { isDirty }
+		formState: { isDirty },
+		reset
 	} = useForm({
 		defaultValues: {
 			title: '',
@@ -59,6 +60,7 @@ const CreatePostCard = ({ postsGet, setOffset }: IPostsModalProps): JSX.Element 
 						preConfirm: async (): Promise<void> => {
 							setOffset(0);
 							postsGet();
+							reset();
 						}
 					});
 				})
