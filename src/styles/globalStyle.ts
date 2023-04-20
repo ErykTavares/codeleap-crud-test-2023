@@ -27,7 +27,9 @@ export const GlobalStyle = createGlobalStyle`
     section{
         width: 100%;
         height: calc(100vh - 100px - 60px);
-        overflow:auto;
+        overflow-y:auto;
+        overflow-x:hidden;
+        scroll-behavior: smooth;
     }
 
     img{

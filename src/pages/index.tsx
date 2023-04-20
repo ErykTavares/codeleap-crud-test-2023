@@ -2,26 +2,44 @@ import CreatePostCard from '@/components/cards/createPostCard';
 import PostCard from '@/components/cards/postCard';
 import DefaultLayout from '@/layout/defaultLayout';
 import api from '@/services/api';
-import { useCallback, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { ContainerStyle, PostsWrapperStyle } from './style';
 
 const Home = () => {
-	const [posts, setPosts] = useState<DPost.IPost[]>();
-
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const userName = useSelector((state: any) => state.userReducer.profile.userName);
+	const [posts, setPosts] = useState<DPost.IPost[]>([]);
+	const [offset, setOffset] = useState(0);
+	const [infinite, setInfinite] = useState(true);
+	const containerRef = useRef<HTMLScriptElement>(null);
 
 	const postsGet = useCallback(async (): Promise<void> => {
-		await api(`/careers/`)
+		await api(`/careers/`, {
+			params: {
+				limit: 10,
+				offset
+			}
+		})
 			.then((res) => {
-				const results = res.data.results;
-				setPosts(results);
+				const { results, count }: { results: DPost.IPost[]; count: number } = res.data;
+				const prevFilters = [...posts.filter((fil) => !results.includes(fil)), ...results];
+
+				setPosts(prevFilters);
+				if (count === posts.length) {
+					setInfinite(false);
+				}
 			})
 			.catch((err) => {
 				console.log(err);
 			});
-	}, []);
+	}, [offset]);
+
+	const handleScroll = useCallback(() => {
+		if (containerRef.current) {
+			const { scrollTop, scrollHeight, clientHeight } = containerRef.current;
+			if (scrollTop + clientHeight === scrollHeight && infinite) {
+				setOffset(posts.length);
+			}
+		}
+	}, [infinite, setOffset, posts]);
 
 	useEffect(() => {
 		postsGet();
@@ -29,7 +47,7 @@ const Home = () => {
 
 	return (
 		<DefaultLayout>
-			<ContainerStyle>
+			<ContainerStyle onScroll={handleScroll} ref={containerRef}>
 				<CreatePostCard postsGet={postsGet} />
 				<PostsWrapperStyle>
 					{posts?.map((item) => (
