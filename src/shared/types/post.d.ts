@@ -1,5 +1,5 @@
-declare namespace DPosts {
-	export interface IPosts {
+declare namespace DPost {
+	export interface IPost {
 		id: number;
 		username: string;
 		created_datetime: string;
