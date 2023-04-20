@@ -9,6 +9,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import * as yup from 'yup';
 import Swal from 'sweetalert2';
+import useLoading from '@/hooks/useLoading';
 import { ContainerStyle, InputsWrapperStyle } from './style';
 
 interface IPostsModalProps {
@@ -35,6 +36,7 @@ const CreatePostCard = ({ postsGet, setOffset }: IPostsModalProps): JSX.Element 
 		mode: 'onSubmit',
 		resolver: yupResolver(postSchema)
 	});
+	const { showLoading, hiddenLoading } = useLoading();
 
 	const postsPost = useCallback(
 		async (data: { title: string; content: string }): Promise<void> => {
@@ -44,6 +46,7 @@ const CreatePostCard = ({ postsGet, setOffset }: IPostsModalProps): JSX.Element 
 			formData.append('title', data.title);
 			formData.append('content', data.content);
 
+			showLoading();
 			await api
 				.post(`/careers/`, formData)
 				.then(() => {
@@ -68,6 +71,7 @@ const CreatePostCard = ({ postsGet, setOffset }: IPostsModalProps): JSX.Element 
 						confirmButtonColor: 'red'
 					});
 				});
+			hiddenLoading();
 		},
 		[postsGet, userName]
 	);

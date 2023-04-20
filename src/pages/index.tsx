@@ -1,5 +1,6 @@
 import CreatePostCard from '@/components/cards/createPostCard';
 import PostCard from '@/components/cards/postCard';
+import useLoading from '@/hooks/useLoading';
 import DefaultLayout from '@/layout/defaultLayout';
 import api from '@/services/api';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -12,7 +13,11 @@ const Home = () => {
 	const [infinite, setInfinite] = useState(true);
 	const containerRef = useRef<HTMLScriptElement>(null);
 
+	const { showLoading, hiddenLoading } = useLoading();
+
 	const postsGet = useCallback(async (): Promise<void> => {
+		showLoading();
+
 		await api(`/careers/`, {
 			params: {
 				limit: 10,
@@ -34,6 +39,7 @@ const Home = () => {
 			.catch((err) => {
 				Swal.fire(err?.response?.data?.message || 'Something went wrong', '', 'error');
 			});
+		hiddenLoading();
 	}, [offset]);
 
 	const handleScroll = useCallback(() => {
