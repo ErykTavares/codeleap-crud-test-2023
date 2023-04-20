@@ -18,10 +18,6 @@ export const InputWrapperStyle = styled.div`
 
 		input {
 			height: 40px;
-			font-style: normal;
-			font-weight: 600;
-			font-size: 1rem;
-			line-height: 15px;
 
 			&::placeholder {
 				color: ${theme.colors.lightGray};

@@ -69,7 +69,7 @@ const Login = (): JSX.Element => {
 								control={control}
 							/>
 						</div>
-						<div className='col-12 d-flex justify-content-end pe-2'>
+						<div className='col-12 d-flex justify-content-end pe-2 mt-2'>
 							<Button
 								type='submit'
 								backgroundColor='blue'
