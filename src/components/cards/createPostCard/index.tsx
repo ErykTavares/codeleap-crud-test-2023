@@ -125,7 +125,7 @@ const CreatePostCard = ({ postsGet, setOffset }: IPostsModalProps): JSX.Element 
 							control={control}
 						/>
 					</div>
-					<div className='col-12 d-flex justify-content-end mt-2'>
+					<div className='col-12 d-flex justify-content-end mt-2 pe-2'>
 						<Button type='submit' backgroundColor='blue' color='#fff' disabled={!isDirty}>
 							Create
 						</Button>

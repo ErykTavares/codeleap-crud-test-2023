@@ -13,7 +13,7 @@ export const TextAreaWrapperStyle = styled.div`
 		margin-left: 0 !important;
 
 		textarea {
-			min-height: 80px !important;
+			min-height: 120px !important;
 			resize: none;
 			&::placeholder {
 				color: ${theme.colors.lightGray};

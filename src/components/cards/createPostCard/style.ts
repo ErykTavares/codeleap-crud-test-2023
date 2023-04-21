@@ -1,9 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const ContainerStyle = styled.div`
 	max-width: 650px;
 	width: 100%;
-	height: 350px;
+	min-height: max-content;
+	height: 390px;
 	display: flex;
 	flex-direction: column;
 	align-items: start;
@@ -17,14 +18,13 @@ export const ContainerStyle = styled.div`
 		font-weight: 700;
 		font-size: 1.375rem;
 		line-height: 26px;
+		padding-left: 1rem;
 	}
 `;
 
 export const InputsWrapperStyle = styled.div`
-	${({ theme }) => css`
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: start;
-	`}
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: start;
 `;
