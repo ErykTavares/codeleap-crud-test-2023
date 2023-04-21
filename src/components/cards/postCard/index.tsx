@@ -1,6 +1,14 @@
+import Modal from '@/components/modal';
 import api from '@/services/api';
 import { formatDistance } from 'date-fns';
-import React, { Dispatch, ReactNode, RefObject, SetStateAction, useCallback } from 'react';
+import React, {
+	Dispatch,
+	ReactNode,
+	RefObject,
+	SetStateAction,
+	useCallback,
+	useState
+} from 'react';
 import { useSelector } from 'react-redux';
 import Edit from 'src/assets/svg/edit.svg';
 import Trash from 'src/assets/svg/trash.svg';
@@ -15,6 +23,8 @@ interface IPostCardProps {
 
 const PostCard = React.forwardRef<(node: ReactNode) => void, IPostCardProps>(
 	({ post, postsGet, setOffset }, ref): JSX.Element => {
+		const [showEditModal, setShowEditModal] = useState(false);
+
 		const userName = useSelector((state: any) => state.userReducer.profile.userName);
 		const postdate = formatDistance(new Date(post.created_datetime), new Date(), {
 			addSuffix: true
@@ -51,16 +61,20 @@ const PostCard = React.forwardRef<(node: ReactNode) => void, IPostCardProps>(
 			<ContainerStyle ref={ref as unknown as RefObject<HTMLDivElement>}>
 				<PostHeaderStyle>
 					<h2>{post.title}</h2>
-					{post.username === userName && (
+					{post.username === userName ? (
 						<ul>
 							<li className='trash'>
 								<Trash onClick={postDelete} />
 							</li>
 							<li>
-								<Edit />
+								<Edit
+									onClick={() => {
+										setShowEditModal(!showEditModal);
+									}}
+								/>
 							</li>
 						</ul>
-					)}
+					) : null}
 				</PostHeaderStyle>
 				<div className='title'>
 					<h4>@{post.username}</h4>
@@ -69,6 +83,11 @@ const PostCard = React.forwardRef<(node: ReactNode) => void, IPostCardProps>(
 				<div className='content'>
 					<p>{post.content}</p>
 				</div>
+				{showEditModal ? (
+					<Modal show={showEditModal} setShow={setShowEditModal}>
+						<h2>modal</h2>
+					</Modal>
+				) : null}
 			</ContainerStyle>
 		);
 	}
