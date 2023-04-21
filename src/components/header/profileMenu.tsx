@@ -50,8 +50,10 @@ const ProfileMenu = (): JSX.Element => {
 				<ProfileNavStyle>
 					<ul>
 						<li>
-							<Person />
-							<Link href='/profile'>Profile</Link>
+							<Link href='/profile'>
+								<Person />
+								Profile
+							</Link>
 						</li>
 						<li className='text-danger' onClick={handleLogout}>
 							<Power />

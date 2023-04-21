@@ -105,6 +105,14 @@ export const ProfileNavStyle = styled.nav`
 				svg {
 					font-size: 1.2rem;
 				}
+
+				a {
+					min-width: max-content;
+					width: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: space-evenly;
+				}
 			}
 		}
 
