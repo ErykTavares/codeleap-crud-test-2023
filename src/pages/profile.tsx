@@ -1,26 +1,28 @@
-import CreatePostCard from '@/components/cards/createPostCard';
 import PostCard from '@/components/cards/postCard';
 import useLoading from '@/hooks/useLoading';
 import DefaultLayout from '@/layout/defaultLayout';
 import api from '@/services/api';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import { ContainerStyle, PostsWrapperStyle } from './style';
 
-const Home = () => {
-	const [posts, setPosts] = useState<DPost.IPost[]>([]);
+const Profile = (): JSX.Element => {
+	const [usePosts, setUserPosts] = useState<DPost.IPost[]>([]);
 	const [offset, setOffset] = useState(0);
 	const containerRef = useRef<HTMLScriptElement>(null);
 
 	const { showLoading, hiddenLoading } = useLoading();
+	const { userName } = useSelector((state: any) => state.userReducer.profile);
 
-	const postsGet = useCallback(async (): Promise<void> => {
+	const userPostsGet = useCallback(async (): Promise<void> => {
 		showLoading();
 
 		await api(`/careers/`, {
 			params: {
 				limit: 10,
-				offset
+				offset,
+				username: userName
 			}
 		})
 			.then((res) => {
@@ -28,11 +30,11 @@ const Home = () => {
 
 				if (results.length) {
 					const prevFilters = [
-						...posts.filter((fil) => !results.includes(fil) && !!offset),
+						...usePosts.filter((fil) => !results.includes(fil) && !!offset),
 						...results
 					];
 
-					setPosts(prevFilters);
+					setUserPosts(prevFilters);
 				}
 			})
 			.catch((err) => {
@@ -45,25 +47,24 @@ const Home = () => {
 		if (containerRef.current) {
 			const { scrollTop, scrollHeight, clientHeight } = containerRef.current;
 			if (scrollTop + clientHeight === scrollHeight) {
-				setOffset(posts.length);
+				setOffset(usePosts.length);
 			}
 		}
-	}, [setOffset, posts]);
+	}, [setOffset, usePosts]);
 
 	useEffect(() => {
-		postsGet();
-	}, [postsGet]);
+		userPostsGet();
+	}, [userPostsGet]);
 
 	return (
 		<DefaultLayout>
 			<ContainerStyle onScroll={handleScroll} ref={containerRef}>
-				<CreatePostCard postsGet={postsGet} setOffset={setOffset} />
 				<PostsWrapperStyle>
-					{posts?.map((item) => (
+					{usePosts?.map((item) => (
 						<PostCard
 							key={crypto.randomUUID()}
 							post={item}
-							postsGet={postsGet}
+							postsGet={userPostsGet}
 							setOffset={setOffset}
 						/>
 					))}
@@ -72,5 +73,4 @@ const Home = () => {
 		</DefaultLayout>
 	);
 };
-
-export default Home;
+export default Profile;

@@ -6,7 +6,12 @@ import { Person, Power } from 'react-bootstrap-icons';
 import { store } from '@/store';
 import { userActions } from '@/store/slices/authSlice';
 import { useRouter } from 'next/router';
-import { ProfileStyle } from './style';
+import {
+	ProfileDropdownStyle,
+	ProfileImgStyle,
+	ProfileNavStyle,
+	ProfileWrapperStyle
+} from './style';
 
 const ProfileMenu = (): JSX.Element => {
 	const [dropDown, setDropDown] = useState(false);
@@ -29,32 +34,33 @@ const ProfileMenu = (): JSX.Element => {
 	};
 
 	return (
-		<ProfileStyle color={profileColor}>
-			<div className='profile-img'>{userName.at(0)}</div>
-			<div className='dropdown'>
-				<p className='mb-0'>{userName}</p>
-				<Chevron
-					className='chevron-svg ms-2'
-					onClick={() => {
-						setDropDown(!dropDown);
-					}}
-				/>
-				{dropDown ? (
-					<nav>
-						<ul>
-							<li>
-								<Person />
-								<Link href='/profile'>Profile</Link>
-							</li>
-							<li className='text-danger' onClick={handleLogout}>
-								<Power />
-								Logout
-							</li>
-						</ul>
-					</nav>
-				) : null}
-			</div>
-		</ProfileStyle>
+		<ProfileWrapperStyle
+			onClick={() => {
+				setDropDown(!dropDown);
+			}}
+		>
+			<ProfileImgStyle color={profileColor}>{userName.at(0)}</ProfileImgStyle>
+			<ProfileDropdownStyle>
+				<p className='mb-0' translate='no'>
+					{userName}
+				</p>
+				<Chevron className='chevron-svg ms-2' />
+			</ProfileDropdownStyle>
+			{dropDown ? (
+				<ProfileNavStyle>
+					<ul>
+						<li>
+							<Person />
+							<Link href='/profile'>Profile</Link>
+						</li>
+						<li className='text-danger' onClick={handleLogout}>
+							<Power />
+							Logout
+						</li>
+					</ul>
+				</ProfileNavStyle>
+			) : null}
+		</ProfileWrapperStyle>
 	);
 };
 export default ProfileMenu;

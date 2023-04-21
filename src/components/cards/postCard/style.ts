@@ -6,7 +6,7 @@ export const ContainerStyle = styled.div`
 		width: 100%;
 		height: 400px;
 		margin-bottom: 2rem;
-		box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+		box-shadow: ${theme.boxShadow};
 		border-radius: 0.5rem;
 
 		.title {
@@ -17,6 +17,12 @@ export const ContainerStyle = styled.div`
 			justify-content: space-between;
 			padding: 0 1.8rem;
 			color: ${theme.colors.lightGray};
+
+			@media screen and (${theme.media.tablet}) {
+				flex-direction: column;
+				align-items: start;
+				justify-content: start;
+			}
 		}
 
 		.content {

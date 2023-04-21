@@ -19,5 +19,6 @@ declare module 'styled-components' {
 			yellow: string;
 			orange: string;
 		};
+		boxShadow: string;
 	}
 }

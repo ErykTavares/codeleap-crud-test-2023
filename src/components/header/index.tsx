@@ -6,7 +6,9 @@ import { HeaderStyle } from './style';
 const Header = (): JSX.Element => (
 	<HeaderStyle>
 		<Link href='/'>
-			<h1 className='mb-0'>CodeLeap Network</h1>
+			<h1 className='mb-0' translate='no'>
+				CodeLeap Network
+			</h1>
 		</Link>
 
 		<ProfileMenu />

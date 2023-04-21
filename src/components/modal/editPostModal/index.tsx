@@ -118,7 +118,7 @@ const EditPostModal = ({
 				</div>
 				<div className='col-12 d-flex justify-content-end mt-2 pe-2'>
 					<Button
-						className='me-2'
+						className='me-3'
 						onClick={() => {
 							if (modalRef.current) modalRef.current.click();
 						}}
