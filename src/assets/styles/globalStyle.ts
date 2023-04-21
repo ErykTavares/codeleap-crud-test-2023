@@ -41,7 +41,7 @@ export const GlobalStyle = createGlobalStyle`
 					height: auto;
 				}
 
-				.delete-title {
+				.sweet-custom-delete-title {
 					margin-top: 0.8rem;
 					padding: 0.8rem !important;
 					font-size: 1.2rem !important;
@@ -50,30 +50,40 @@ export const GlobalStyle = createGlobalStyle`
 					text-align: start;
 				}
 
-				.delete-actions {
+				.sweet-custom-delete-actions {
 					display: flex;
 					flex-direction: row-reverse;
 					justify-content: end;
 					margin: 0 0.5rem;
 
-					.delete-btn-cancel {
+					.sweet-custom-delete-btn-cancel {
 						background: #ffff;
 						border: 1px solid ${theme.colors.lightGray};
 						border-radius: 8px;
 						color: black;
+						padding: 0;
 					}
 
-					.delete-btn-confirm {
+					.sweet-custom-delete-btn-confirm {
 						background: ${theme.colors.red};
 						border-radius: 8px;
+						padding: 0;
 					}
+				}
+
+				.sweet-custom-btn {
+					width: 120px;
+					display: flex !important;
+					align-items: center;
+					justify-content: center;
+					height: 34px;
 				}
 
 				.pop-modal {
-					animation: pop 1s forwards ease-in-out;
+					animation: pop 0.5s forwards ease-in-out;
 				}
 				.unpop-modal {
-					animation: unpop 1s forwards ease-in-out;
+					animation: unpop 0.5s forwards ease-in-out;
 				}
 
 				@keyframes pop {

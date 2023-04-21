@@ -1,6 +1,6 @@
 import { store } from '@/store';
-import { GlobalStyle } from '@/styles/globalStyle';
-import theme from '@/styles/theme';
+import { GlobalStyle } from '@/assets/styles/globalStyle';
+import theme from '@/assets/styles/theme';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';

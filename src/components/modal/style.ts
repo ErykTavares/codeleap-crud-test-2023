@@ -11,7 +11,7 @@ export const ModalStyle = styled.div`
 	justify-content: center;
 	background-color: rgba(0, 0, 0, 0.2);
 	z-index: 1000;
-	transition: 0.5s;
+	transition: 0.3s;
 `;
 
 export const WrapperStyle = styled.div`
@@ -29,7 +29,7 @@ export const WrapperStyle = styled.div`
 		border-radius: 0.5rem;
 		box-shadow: ${theme.boxShadow};
 		background-color: #fff;
-		transition: 0.5s;
+		transition: 0.3s;
 
 		.modal-title-container {
 			h3 {

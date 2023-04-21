@@ -5,7 +5,7 @@ import DefaultLayout from '@/layout/defaultLayout';
 import api from '@/services/api';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Swal from 'sweetalert2';
-import { ContainerStyle, PostsWrapperStyle } from './style';
+import { ContainerStyle, PostsWrapperStyle } from '../assets/styles/pages/homeStyle';
 
 const Home = () => {
 	const [posts, setPosts] = useState<DPost.IPost[]>([]);

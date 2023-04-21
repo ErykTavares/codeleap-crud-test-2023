@@ -5,7 +5,7 @@ import api from '@/services/api';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import { ContainerStyle, PostsWrapperStyle } from './style';
+import { ContainerStyle, PostsWrapperStyle } from '../assets/styles/pages/homeStyle';
 
 const Profile = (): JSX.Element => {
 	const [usePosts, setUserPosts] = useState<DPost.IPost[]>([]);

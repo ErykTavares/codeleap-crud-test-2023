@@ -16,7 +16,7 @@ const Modal = React.forwardRef<HTMLDivElement, IModalProps>(
 			setAnimation('unpop-modal');
 			setTimeout(() => {
 				setShow(false);
-			}, 1000);
+			}, 500);
 		};
 
 		const handleKeyDown = (e: KeyboardEvent): void => {

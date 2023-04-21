@@ -73,8 +73,28 @@ export const PostHeaderStyle = styled.header`
 			svg {
 				cursor: pointer;
 				transition: 0.3s;
+				path {
+					transition: 0.3s;
+				}
+
 				&:hover {
 					transform: scale(1.2);
+				}
+			}
+
+			.trash-svg {
+				&:hover {
+					path {
+						fill: ${theme.colors.red};
+					}
+				}
+			}
+
+			.edit-svg {
+				&:hover {
+					path {
+						fill: ${theme.colors.lightGreen};
+					}
 				}
 			}
 

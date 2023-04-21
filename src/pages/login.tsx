@@ -9,8 +9,8 @@ import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
-import theme from '@/styles/theme';
-import { ContainerStyle, LoginWrapperStyle } from './style';
+import theme from '@/assets/styles/theme';
+import { ContainerStyle, LoginWrapperStyle } from '../assets/styles/pages/loginStyle';
 
 export const loginSchema = yup.object().shape({
 	userName: yup

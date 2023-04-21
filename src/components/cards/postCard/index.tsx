@@ -34,10 +34,10 @@ const PostCard = React.forwardRef<(node: ReactNode) => void, IPostCardProps>(
 			Swal.fire({
 				title: 'Are you sure want to delete this item?',
 				customClass: {
-					title: 'delete-title',
-					actions: 'delete-actions',
-					denyButton: 'delete-btn-cancel',
-					confirmButton: 'delete-btn-confirm'
+					title: 'sweet-custom-delete-title',
+					actions: 'sweet-custom-delete-actions',
+					denyButton: 'sweet-custom-delete-btn-cancel sweet-custom-btn',
+					confirmButton: 'sweet-custom-delete-btn-confirm sweet-custom-btn'
 				},
 				showDenyButton: true,
 				confirmButtonText: 'Delete',
@@ -64,10 +64,11 @@ const PostCard = React.forwardRef<(node: ReactNode) => void, IPostCardProps>(
 					{post.username === userName ? (
 						<ul>
 							<li className='trash'>
-								<Trash onClick={postDelete} />
+								<Trash className='trash-svg' onClick={postDelete} />
 							</li>
 							<li>
 								<Edit
+									className='edit-svg'
 									onClick={() => {
 										setShowEditModal(!showEditModal);
 									}}
