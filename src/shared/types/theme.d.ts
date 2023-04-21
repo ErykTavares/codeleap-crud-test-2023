@@ -14,6 +14,10 @@ declare module 'styled-components' {
 			red: string;
 			green: string;
 			lightGray: string;
+			violet: string;
+			rose: string;
+			yellow: string;
+			orange: string;
 		};
 	}
 }

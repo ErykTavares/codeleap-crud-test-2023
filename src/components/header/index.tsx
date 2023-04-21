@@ -1,16 +1,15 @@
+import Link from 'next/dist/client/link';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import ProfileMenu from './profileMenu';
 import { HeaderStyle } from './style';
 
-const Header = (): JSX.Element => {
-	const userName = useSelector((state: any) => state.userReducer.profile.userName);
-
-	return (
-		<HeaderStyle>
+const Header = (): JSX.Element => (
+	<HeaderStyle>
+		<Link href='/'>
 			<h1 className='mb-0'>CodeLeap Network</h1>
+		</Link>
 
-			<h2 className='mb-0'>{userName}</h2>
-		</HeaderStyle>
-	);
-};
+		<ProfileMenu />
+	</HeaderStyle>
+);
 export default Header;

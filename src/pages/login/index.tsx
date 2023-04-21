@@ -9,6 +9,7 @@ import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
+import theme from '@/styles/theme';
 import { ContainerStyle, LoginWrapperStyle } from './style';
 
 export const loginSchema = yup.object().shape({
@@ -17,6 +18,8 @@ export const loginSchema = yup.object().shape({
 		.min(5, 'User Name must be at least 5 characters long')
 		.required('User Name is required')
 });
+
+const colorList = Object.keys(theme.colors);
 
 const Login = (): JSX.Element => {
 	const {
@@ -34,7 +37,10 @@ const Login = (): JSX.Element => {
 	const { push } = useRouter();
 
 	const handleSetUserName = (data: { userName: string }): void => {
-		const profile = { userName: data.userName };
+		const profile = {
+			userName: data.userName,
+			profileColor: colorList[Math.floor(Math.random() * colorList.length)]
+		};
 		store.dispatch(
 			userActions.setUserName({
 				profile,

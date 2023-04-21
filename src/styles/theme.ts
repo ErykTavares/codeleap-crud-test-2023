@@ -10,7 +10,11 @@ const theme = {
 		blue: '#7695EC',
 		red: '#FF5151',
 		green: '#47B960',
-		lightGray: '#999999'
+		lightGray: '#999999',
+		violet: '#8849F2',
+		rose: '#EB09C4',
+		yellow: '#EAE700',
+		orange: '#F28807'
 	}
 };
 

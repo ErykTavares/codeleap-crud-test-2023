@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import nookies from 'nookies';
 
 interface IUser {
-	profile: { userName: string };
+	profile: { userName: string; profileColor: string };
 	auth: {};
 }
 
 const initialState: IUser = {
-	profile: { userName: '' },
+	profile: { userName: '', profileColor: '' },
 	auth: {}
 };
 
