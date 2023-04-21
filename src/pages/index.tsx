@@ -3,7 +3,7 @@ import PostCard from '@/components/cards/postCard';
 import useLoading from '@/hooks/useLoading';
 import DefaultLayout from '@/layout/defaultLayout';
 import api from '@/services/api';
-import { Head } from 'next/document';
+import Head from 'next/head';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Swal from 'sweetalert2';
 import { ContainerStyle, PostsWrapperStyle } from '../assets/styles/pages/homeStyle';
@@ -58,7 +58,7 @@ const Home = () => {
 	return (
 		<>
 			<Head>
-				<title>Codeleap Test - Home</title>
+				<title>CodeLeap-Home</title>
 			</Head>
 			<DefaultLayout>
 				<ContainerStyle onScroll={handleScroll} ref={containerRef}>
