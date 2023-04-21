@@ -3,6 +3,7 @@ import PostCard from '@/components/cards/postCard';
 import useLoading from '@/hooks/useLoading';
 import DefaultLayout from '@/layout/defaultLayout';
 import api from '@/services/api';
+import { Head } from 'next/document';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Swal from 'sweetalert2';
 import { ContainerStyle, PostsWrapperStyle } from '../assets/styles/pages/homeStyle';
@@ -55,21 +56,26 @@ const Home = () => {
 	}, [postsGet]);
 
 	return (
-		<DefaultLayout>
-			<ContainerStyle onScroll={handleScroll} ref={containerRef}>
-				<CreatePostCard postsGet={postsGet} setOffset={setOffset} />
-				<PostsWrapperStyle>
-					{posts?.map((item) => (
-						<PostCard
-							key={crypto.randomUUID()}
-							post={item}
-							postsGet={postsGet}
-							setOffset={setOffset}
-						/>
-					))}
-				</PostsWrapperStyle>
-			</ContainerStyle>
-		</DefaultLayout>
+		<>
+			<Head>
+				<title>Codeleap Test - Home</title>
+			</Head>
+			<DefaultLayout>
+				<ContainerStyle onScroll={handleScroll} ref={containerRef}>
+					<CreatePostCard postsGet={postsGet} setOffset={setOffset} />
+					<PostsWrapperStyle>
+						{posts?.map((item) => (
+							<PostCard
+								key={crypto.randomUUID()}
+								post={item}
+								postsGet={postsGet}
+								setOffset={setOffset}
+							/>
+						))}
+					</PostsWrapperStyle>
+				</ContainerStyle>
+			</DefaultLayout>
+		</>
 	);
 };
 

@@ -10,6 +10,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
 import theme from '@/assets/styles/theme';
+import Head from 'next/dist/shared/lib/head';
 import { ContainerStyle, LoginWrapperStyle } from '../assets/styles/pages/loginStyle';
 
 export const loginSchema = yup.object().shape({
@@ -52,6 +53,9 @@ const Login = (): JSX.Element => {
 
 	return (
 		<>
+			<Head>
+				<title>Codeleap Test - Login</title>
+			</Head>
 			<ContainerStyle>
 				<LoginWrapperStyle>
 					<div className='col-12 ps-2 title-container'>
