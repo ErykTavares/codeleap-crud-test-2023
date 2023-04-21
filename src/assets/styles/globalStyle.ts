@@ -42,19 +42,19 @@ export const GlobalStyle = createGlobalStyle`
 				}
 
 				.sweet-custom-delete-title {
-					margin-top: 0.8rem;
+					margin-top: 0.8rem !important;
 					padding: 0.8rem !important;
 					font-size: 1.2rem !important;
-					font-weight: 700;
-					line-height: 26px;
-					text-align: start;
+					font-weight: 700 !important;
+					line-height: 26px !important;
+					text-align: start !important;
 				}
 
 				.sweet-custom-delete-actions {
-					display: flex;
+					display: flex !important;
 					flex-direction: row-reverse;
-					justify-content: end;
-					margin: 0 0.5rem;
+					justify-content: end !important;
+					margin: 0 0.5rem !important;
 
 					.sweet-custom-delete-btn-cancel {
 						background: #ffff;
