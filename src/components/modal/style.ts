@@ -27,4 +27,12 @@ export const WrapperStyle = styled.div`
 	border-radius: 0.5rem;
 	box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 	background-color: #fff;
+
+	.modal-title-container {
+		h3 {
+			font-weight: 700;
+			font-size: 1.375rem;
+			line-height: 26px;
+		}
+	}
 `;

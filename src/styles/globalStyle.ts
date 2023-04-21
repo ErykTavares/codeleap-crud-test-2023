@@ -44,7 +44,7 @@ export const GlobalStyle = createGlobalStyle`
 				.delete-title {
 					margin-top: 0.8rem;
 					padding: 0.8rem !important;
-					font-size: 1.375rem !important;
+					font-size: 1.2rem !important;
 					font-weight: 700;
 					line-height: 26px;
 					text-align: start;

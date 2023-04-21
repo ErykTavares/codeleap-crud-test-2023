@@ -2,6 +2,7 @@ import React from 'react';
 import { ButtonStyle } from './style';
 
 interface IButtonProps {
+	className?: string;
 	children: string;
 	type?: 'submit' | 'button' | 'reset';
 	disabled?: boolean;
@@ -11,6 +12,7 @@ interface IButtonProps {
 }
 
 const Button = ({
+	className,
 	children,
 	type,
 	onClick,
@@ -19,6 +21,7 @@ const Button = ({
 	color
 }: IButtonProps): JSX.Element => (
 	<ButtonStyle
+		className={className || ''}
 		type={type || 'button'}
 		onClick={onClick}
 		disabled={disabled}

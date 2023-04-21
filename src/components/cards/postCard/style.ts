@@ -49,13 +49,14 @@ export const PostHeaderStyle = styled.header`
 		margin-bottom: 0.5rem;
 
 		h2 {
-			width: calc(100% - 80px)
+			width: calc(100% - 80px);
 			font-weight: 300;
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
-			margin-right: .5rem;
+			margin-right: 0.5rem;
 			margin-bottom: 0;
+			font-size: 1.375rem;
 		}
 
 		ul {

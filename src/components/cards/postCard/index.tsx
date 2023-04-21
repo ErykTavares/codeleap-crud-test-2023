@@ -1,4 +1,4 @@
-import Modal from '@/components/modal';
+import EditPostModal from '@/components/modal/editPostModal';
 import api from '@/services/api';
 import { formatDistance } from 'date-fns';
 import React, {
@@ -84,9 +84,13 @@ const PostCard = React.forwardRef<(node: ReactNode) => void, IPostCardProps>(
 					<p>{post.content}</p>
 				</div>
 				{showEditModal ? (
-					<Modal show={showEditModal} setShow={setShowEditModal}>
-						<h2>modal</h2>
-					</Modal>
+					<EditPostModal
+						post={post}
+						show={showEditModal}
+						setShow={setShowEditModal}
+						postsGet={postsGet}
+						setOffset={setOffset}
+					/>
 				) : null}
 			</ContainerStyle>
 		);
