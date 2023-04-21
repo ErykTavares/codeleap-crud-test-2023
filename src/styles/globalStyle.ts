@@ -68,5 +68,34 @@ export const GlobalStyle = createGlobalStyle`
 						border-radius: 8px;
 					}
 				}
+
+				.pop-modal {
+					animation: pop 1s forwards ease-in-out;
+				}
+				.unpop-modal {
+					animation: unpop 1s forwards ease-in-out;
+				}
+
+				@keyframes pop {
+					from {
+						opacity: 0;
+						transform: scale(0);
+					}
+					to {
+						opacity: 1;
+						transform: scale(1);
+					}
+				}
+
+				@keyframes unpop {
+					from {
+						opacity: 1;
+						transform: scale(1);
+					}
+					to {
+						opacity: 0;
+						transform: scale(0);
+					}
+				}
 			`}
 `;

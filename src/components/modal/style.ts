@@ -2,15 +2,16 @@ import styled from 'styled-components';
 
 export const ModalStyle = styled.div`
 	position: fixed;
+	display: flex;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100vh;
-	display: flex;
 	align-items: center;
 	justify-content: center;
 	background-color: rgba(0, 0, 0, 0.2);
 	z-index: 1000;
+	transition: 0.5s;
 `;
 
 export const WrapperStyle = styled.div`
@@ -27,6 +28,7 @@ export const WrapperStyle = styled.div`
 	border-radius: 0.5rem;
 	box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 	background-color: #fff;
+	transition: 0.5s;
 
 	.modal-title-container {
 		h3 {

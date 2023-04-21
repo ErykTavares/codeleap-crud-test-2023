@@ -6,7 +6,7 @@ import TextArea from '@/components/form/textArea';
 import useLoading from '@/hooks/useLoading';
 import api from '@/services/api';
 import { yupResolver } from '@hookform/resolvers/yup';
-import React, { Dispatch, SetStateAction, useCallback } from 'react';
+import React, { Dispatch, SetStateAction, useCallback, useRef } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import Modal from '..';
@@ -26,6 +26,8 @@ const EditPostModal = ({
 	postsGet,
 	setOffset
 }: IEditPostModalProps): JSX.Element => {
+	const modalRef = useRef<HTMLDivElement>(null);
+
 	const { control, handleSubmit } = useForm({
 		defaultValues: {
 			title: post.title,
@@ -55,7 +57,7 @@ const EditPostModal = ({
 					preConfirm: async (): Promise<void> => {
 						setOffset(0);
 						postsGet();
-						setShow(!show);
+						if (modalRef.current) modalRef.current.click();
 					}
 				});
 			})
@@ -72,7 +74,7 @@ const EditPostModal = ({
 	}, []);
 
 	return (
-		<Modal title='Edit Modal' show={show} setShow={setShow}>
+		<Modal ref={modalRef} title='Edit Modal' show={show} setShow={setShow}>
 			<Form
 				method='POST'
 				onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
@@ -115,7 +117,12 @@ const EditPostModal = ({
 					/>
 				</div>
 				<div className='col-12 d-flex justify-content-end mt-2 pe-2'>
-					<Button className='me-2' onClick={() => setShow(!show)}>
+					<Button
+						className='me-2'
+						onClick={() => {
+							if (modalRef.current) modalRef.current.click();
+						}}
+					>
 						Cancel
 					</Button>
 					<Button type='submit' backgroundColor='green' color='#fff'>

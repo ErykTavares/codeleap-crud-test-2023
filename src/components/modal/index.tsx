@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ModalStyle, WrapperStyle } from './style';
 
 interface IModalProps {
@@ -8,31 +8,43 @@ interface IModalProps {
 	setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Modal = ({ children, title, show, setShow }: IModalProps): JSX.Element => {
-	const handleKeyDown = (e: KeyboardEvent): void => {
-		e.key === 'Escape' && setShow(!show);
-	};
+const Modal = React.forwardRef<HTMLDivElement, IModalProps>(
+	({ children, title, show, setShow }, ref): JSX.Element => {
+		const [animation, setAnimation] = useState('pop-modal');
 
-	useEffect(() => {
-		document.addEventListener('keydown', handleKeyDown);
-		return () => document.removeEventListener('keydown', handleKeyDown);
-	}, []);
+		const handleCloseModal = (): void => {
+			setAnimation('unpop-modal');
+			setTimeout(() => {
+				setShow(false);
+			}, 1000);
+		};
 
-	return (
-		<ModalStyle
-			onClick={() => setShow(!show)}
-			onKeyDown={(event) => {
-				event.key === 'Escape' && setShow(!show);
-			}}
-			tabIndex={0}
-		>
-			<WrapperStyle autoFocus onClick={(e) => e.stopPropagation()}>
-				<div className='col-12 ms-3 modal-title-container'>
-					<h3>{title}</h3>
-				</div>
-				{children}
-			</WrapperStyle>
-		</ModalStyle>
-	);
-};
+		const handleKeyDown = (e: KeyboardEvent): void => {
+			e.key === 'Escape' && handleCloseModal();
+		};
+
+		useEffect(() => {
+			document.addEventListener('keydown', handleKeyDown);
+			return () => document.removeEventListener('keydown', handleKeyDown);
+		}, []);
+
+		return (
+			<ModalStyle
+				ref={ref}
+				onClick={() => handleCloseModal()}
+				onKeyDown={(event) => {
+					event.key === 'Escape' && setShow(!show);
+				}}
+				tabIndex={0}
+			>
+				<WrapperStyle className={animation} autoFocus onClick={(e) => e.stopPropagation()}>
+					<div className='col-12 ms-3 modal-title-container'>
+						<h3>{title}</h3>
+					</div>
+					{children}
+				</WrapperStyle>
+			</ModalStyle>
+		);
+	}
+);
 export default Modal;
