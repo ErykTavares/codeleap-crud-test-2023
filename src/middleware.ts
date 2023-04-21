@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export function middleware(req: NextRequest) {
-	const profile = req.cookies.get('profile');
+	const profile = JSON.parse(req.cookies.get('profile')?.value || '');
 
-	if (!profile?.value) {
+	if (!profile?.userName) {
 		if (req.nextUrl.pathname.startsWith('/')) {
 			return NextResponse.redirect(new URL('/login', req.url));
 		}
@@ -11,5 +11,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-	matcher: ['/']
+	matcher: ['/', '/profile']
 };
