@@ -1,24 +1,24 @@
-# ****
+# **CodeLeap crud test 2023**
 
 ### **Descrição:**
+Desafio de uma vaga, desenvolver um mini sistema tipo Twitter com Next.js e Redux, incluindo login via username e funcionalidades de criar, editar e deletar posts.
 
-- ****
+- ***
 
 ### **Site do Projeto**
-
-****
+**https://codeleap-crud-test-2023.vercel.app/**
+---
 
 ### **Exemplo do Projeto**
 
-<img src='' alt='gif de exemplo do projeto'>
+<img src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjgxMWQ2N2RhYWE2MTFhNmJlODMwN2UzNjVkZTk5OTdhNDMxMjZkOSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/vTzOOQD2wEmvIbDuCr/giphy.gif' alt='gif de exemplo do projeto'>
 
 ### **Ferramentas Usadas**
 
-<img src='' alt=''>
-
-### **Dependencias de desenvolvimento:**
-
-- ****
+<img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=whit" alt="next">
+<img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" alt="styled components">
+<img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" alt="redux">
+<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="typescript">
 
 ### **Contato & RedeSociais**
 
