@@ -18,7 +18,7 @@ import { ContainerStyle, PostHeaderStyle } from './style';
 interface IPostCardProps {
 	post: DPost.IPost;
 	postsGet: () => Promise<void>;
-	setOffset: Dispatch<SetStateAction<number>>;
+	setOffset?: Dispatch<SetStateAction<number>>;
 }
 
 const PostCard = React.forwardRef<(node: ReactNode) => void, IPostCardProps>(
@@ -51,7 +51,7 @@ const PostCard = React.forwardRef<(node: ReactNode) => void, IPostCardProps>(
 						.catch((err) => {
 							Swal.fire(err?.response?.data?.message || 'Something went wrong', '', 'error');
 						});
-					setOffset(0);
+					setOffset && setOffset(0);
 					postsGet();
 				}
 			});

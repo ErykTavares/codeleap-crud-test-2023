@@ -16,7 +16,7 @@ interface IEditPostModalProps {
 	show: boolean;
 	setShow: React.Dispatch<React.SetStateAction<boolean>>;
 	postsGet: () => Promise<void>;
-	setOffset: Dispatch<SetStateAction<number>>;
+	setOffset?: Dispatch<SetStateAction<number>>;
 }
 
 const EditPostModal = ({
@@ -55,7 +55,7 @@ const EditPostModal = ({
 					confirmButtonText: 'ok',
 					confirmButtonColor: 'green',
 					preConfirm: async (): Promise<void> => {
-						setOffset(0);
+						setOffset && setOffset(0);
 						postsGet();
 						if (modalRef.current) modalRef.current.click();
 					}
