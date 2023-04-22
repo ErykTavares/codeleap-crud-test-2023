@@ -10,7 +10,8 @@ export const ContainerStyle = styled.section`
 export const LoginWrapperStyle = styled.div`
 	width: 100%;
 	max-width: 500px;
-	height: 270px;
+	height: max-content;
+	min-height: 270px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
