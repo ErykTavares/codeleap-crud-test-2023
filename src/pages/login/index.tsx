@@ -11,9 +11,15 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/navigation';
 import theme from '@/assets/styles/theme';
 import Head from 'next/head';
-import { ContainerStyle, LoginWrapperStyle } from '../assets/styles/pages/loginStyle';
+import { ContainerStyle, LoginWrapperStyle } from '../../assets/styles/pages/loginStyle';
 
-export const loginSchema = yup.object().shape({
+export async function getStaticProps() {
+	return {
+		props: { test: 'text' }
+	};
+}
+
+const loginSchema = yup.object().shape({
 	userName: yup
 		.string()
 		.min(5, 'User Name must be at least 5 characters long')
