@@ -20,7 +20,7 @@ export const HeaderStyle = styled.header`
 
 export const ProfileWrapperStyle = styled.div`
 	${({ theme }) => css`
-		width: 210px;
+		width: max-content;
 		height: 50px;
 		display: flex;
 		align-items: start;
@@ -52,7 +52,8 @@ export const ProfileImgStyle = styled.div<{ color: string }>`
 export const ProfileDropdownStyle = styled.div`
 	${({ theme }) => css`
 		position: relative;
-		width: 150px;
+		min-width: 150px;
+		width: max-content;
 		height: 100%;
 		display: flex;
 		align-items: center;
